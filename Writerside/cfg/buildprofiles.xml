@@ -6,7 +6,7 @@
     <!-- https://www.jetbrains.com/help/writerside/generate-sitemap.html -->
     <sitemap priority="0.35" change-frequency="daily"/>
 
-    <build-profile instance="moonlight">
+    <build-profile instance="Moonlight">
         <variables>
             <primary-color>ruby</primary-color>
             <color-preset>contrast</color-preset>
