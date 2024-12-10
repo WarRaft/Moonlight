@@ -2,6 +2,8 @@
 
 - [Unryze](https://github.com/UnryzeC)
     - [UjAPI](https://unryzec.github.io/UjAPI)
+- [Sozidar](https://xgm.guru/user/Sozidar)
+  - [Edemium](https://xgm.guru/p/edemium)
 - [Vinz](https://www.hiveworkshop.com/members/vinz.230106)
     - [Ember Sword Enchantments](https://www.hiveworkshop.com/threads/ember-sword-enchantments.315320)
     - [Ember Shield Enchantments](https://www.hiveworkshop.com/threads/ember-shield-enchantments-vol-ii.315579)

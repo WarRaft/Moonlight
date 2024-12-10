@@ -8,7 +8,11 @@
 
     <toc-element topic="about.md"/>
     <toc-element topic="tech.md"/>
-    <toc-element topic="ui.md"/>
+    <toc-element topic="ui.md">
+        <toc-element topic="font.md"/>
+    </toc-element>
+    <toc-element topic="tileset.md"/>
+    <toc-element topic="DNC.md"/>
     <toc-element topic="credits.md"/>
     <toc-element topic="donate.md"/>
 </instance-profile>

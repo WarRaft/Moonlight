@@ -8,9 +8,13 @@
 
 ![Bloodmoon Custom User interface](UI-BloodMoon.png){width="400" thumbnail="true"}
 
-К сожалению, этот интерфейс заменяет не все текстуры, поэтому позаимствуем круг каста из другого интерфейса.
+К сожалению, этот интерфейс заменяет не все текстуры. Недостающие текстуры возьмём из
+проекта [Edemium](https://xgm.guru/p/edemium):
 
-[Dungeonmaster UI](https://www.hiveworkshop.com/threads/dungeonmaster-ui.299416)
+<video src="https://youtu.be/Jw5StvBFLEM?si=lw5Y1HfuoZeOSzbJ"/>
+
+Напоследок возьмём подходящий круг каста
+из [Dungeonmaster UI](https://www.hiveworkshop.com/threads/dungeonmaster-ui.299416):
 
 ![UI-Dungeonmaster.png](UI-Dungeonmaster.png){width="400" thumbnail="true"}
 

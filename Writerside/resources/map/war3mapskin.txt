@@ -1,0 +1,7 @@
+[CustomSkin]
+MasterFont=Fonts\Gabriela.ttf
+MessageFont=Fonts\Gabriela.ttf
+ChatFont=Fonts\Gabriela.ttf
+EscMenuTextFont=Fonts\Gabriela.ttf
+InfoPanelTextFont=Fonts\Gabriela.ttf
+TextTagFont=Fonts\Gabriela.ttf
