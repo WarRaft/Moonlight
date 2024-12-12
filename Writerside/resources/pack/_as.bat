@@ -1,9 +1,11 @@
 call var.bat
 
-set WinWorkDir=%WinDir%\as\
-set MacWorkDir=%MacDir%\as\
+rd %WinAsDir% /s /q
 
-call copy.bat
-call pack.bat
+robocopy %MacMapDir% %WinAsDir% *.j *.as /s /nfl /ndl
+
+call clear.bat
+
+%MPQEditor% /add %w3x% %WinAsDir% "\" /r /c /auto
+
 call run.bat
-

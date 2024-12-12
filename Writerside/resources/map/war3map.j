@@ -432,7 +432,6 @@ function InitAllyPriorities takes nothing returns nothing
     call SetStartLocPrio(11, 0, 10, MAP_LOC_PRIO_HIGH)
 endfunction
 
-//===========================================================================
 function main takes nothing returns nothing
     call SetCameraBounds(-2048.0 + GetCameraMargin(CAMERA_MARGIN_LEFT), -2048.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 2048.0 - GetCameraMargin(CAMERA_MARGIN_RIGHT), 2048.0 - GetCameraMargin(CAMERA_MARGIN_TOP), -2048.0 + GetCameraMargin(CAMERA_MARGIN_LEFT), 2048.0 - GetCameraMargin(CAMERA_MARGIN_TOP), 2048.0 - GetCameraMargin(CAMERA_MARGIN_RIGHT), -2048.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM))
     call SetDayNightModels("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl", "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl")
@@ -470,7 +469,6 @@ function config takes nothing returns nothing
     call DefineStartLocation(10, 1280.0, -1792.0)
     call DefineStartLocation(11, 1792.0, -1792.0)
 
-    // Player setup
     call InitCustomPlayerSlots()
     call InitCustomTeams()
     call InitAllyPriorities()

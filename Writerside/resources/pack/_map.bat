@@ -1,8 +1,19 @@
 call var.bat
 
-set WinWorkDir=%WinDir%\map\
-set MacWorkDir=%MacDir%\map\
+rd %WinMapDir% /s /q
 
-call copy.bat
-call pack.bat
+%MPQEditor% /extract %w3x% "*" "%WinMapDir%" /fp
+
+robocopy %MacMapDir% %WinMapDir% *.* /s /nfl /ndl
+
+call clear.bat
+
+echo F|xcopy %w3x% %w3xBackup% /y
+
+del %w3x%
+
+%MPQEditor% /new %w3x% 500
+%MPQEditor% /add %w3x% %WinMapDir% "\" /r /c /auto
+%MPQEditor% /compact %w3x%
+
 call run.bat
