@@ -1,2 +1,4 @@
 rd /s/q %WinWorkDir%
-xcopy %MacWorkDir% %WinWorkDir% /e
+
+robocopy %MacWorkDir% %WinWorkDir% "*.*" /s /b
+

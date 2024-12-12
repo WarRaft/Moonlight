@@ -1,34 +1,3 @@
-function CreateUnitsForPlayer0 takes nothing returns nothing
-    local player p = Player(0)
-    local unit u
-    local integer unitID
-    local trigger t
-    local real life
-
-    set u = CreateUnit(p, 'Hblm', -272.8, 82.4, 359.077)
-endfunction
-
-//===========================================================================
-function CreatePlayerBuildings takes nothing returns nothing
-endfunction
-
-//===========================================================================
-function CreatePlayerUnits takes nothing returns nothing
-    call CreateUnitsForPlayer0()
-endfunction
-
-//===========================================================================
-function CreateAllUnits takes nothing returns nothing
-    call CreatePlayerBuildings()
-    call CreatePlayerUnits()
-endfunction
-
-//***************************************************************************
-//*
-//*  Players
-//*
-//***************************************************************************
-
 function InitCustomPlayerSlots takes nothing returns nothing
 
     // Player 0
@@ -463,19 +432,12 @@ function InitAllyPriorities takes nothing returns nothing
     call SetStartLocPrio(11, 0, 10, MAP_LOC_PRIO_HIGH)
 endfunction
 
-//***************************************************************************
-//*
-//*  Main Initialization
-//*
-//***************************************************************************
-
 //===========================================================================
 function main takes nothing returns nothing
     call SetCameraBounds(-2048.0 + GetCameraMargin(CAMERA_MARGIN_LEFT), -2048.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 2048.0 - GetCameraMargin(CAMERA_MARGIN_RIGHT), 2048.0 - GetCameraMargin(CAMERA_MARGIN_TOP), -2048.0 + GetCameraMargin(CAMERA_MARGIN_LEFT), 2048.0 - GetCameraMargin(CAMERA_MARGIN_TOP), 2048.0 - GetCameraMargin(CAMERA_MARGIN_RIGHT), -2048.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM))
     call SetDayNightModels("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl", "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl")
     call NewSoundEnvironment("Default")
     call SetMapMusic("Music", true, 0)
-    call CreateAllUnits()
 
     call ConfigureNeutralVictim()
     call InitBlizzardGlobals()
@@ -489,7 +451,7 @@ function main takes nothing returns nothing
 endfunction
 
 function config takes nothing returns nothing
-    call SetMapName("TRIGSTR_001")
+    call SetMapName("Moonlight")
     call SetMapDescription("")
     call SetPlayers(12)
     call SetTeams(12)
