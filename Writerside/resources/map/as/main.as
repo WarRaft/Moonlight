@@ -1,5 +1,8 @@
 namespace Map {
 
+    // function.+\n.[\s\S]*?endfunction
+    //function\nendfunction
+
 void main() {
     print("Map::main()\n");
 
@@ -16,8 +19,6 @@ void main() {
 
     TimerStart(CreateTimer(), 0.f, false, function() {
         DestroyTimer(GetExpiredTimer());
-
-
 
         for (int i = 0; i < 12 ; ++i) {
             player p = Player(i);
