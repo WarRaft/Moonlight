@@ -6,3 +6,10 @@ EscMenuTextFont=Fonts\Gabriela.ttf
 InfoPanelTextFont=Fonts\Gabriela.ttf
 TextTagFont=Fonts\Gabriela.ttf
 
+EscMenuButtonBorder=UI\Widgets\EscMenu\Human\human-options-menu-border.blp
+EscMenuButtonPushedBorder=UI\Widgets\EscMenu\Human\human-options-menu-border.blp
+EscMenuButtonBackground=UI\Widgets\EscMenu\Human\human-options-menu-background.blp
+EscMenuButtonPushedBackground=UI\Widgets\EscMenu\Human\human-options-menu-background.blp
+
+ToolTipBorder=UI\Widgets\EscMenu\Human\human-options-menu-border.blp
+ToolTipBackground=UI\Widgets\EscMenu\Human\human-options-menu-background.blp

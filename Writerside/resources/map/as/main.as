@@ -3,7 +3,9 @@ namespace Map {
 void main() {
     print("Map::main()\n");
 
-    SetTimeOfDayScale(10);
+    //SetTimeOfDayScale(10);
+    SuspendTimeOfDay(false);
+    SetFloatGameState(GAME_STATE_TIME_OF_DAY, 0.f);
 
     SetCameraBounds( - 2048.0f + GetCameraMargin(CAMERA_MARGIN_LEFT),  - 2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 2048.0f - GetCameraMargin(CAMERA_MARGIN_RIGHT), 2048.0f - GetCameraMargin(CAMERA_MARGIN_TOP),  - 2048.0f + GetCameraMargin(CAMERA_MARGIN_LEFT), 2048.0f - GetCameraMargin(CAMERA_MARGIN_TOP), 2048.0f - GetCameraMargin(CAMERA_MARGIN_RIGHT),  - 2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM));
     SetDayNightModels("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl", "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl");
@@ -14,6 +16,8 @@ void main() {
 
     TimerStart(CreateTimer(), 0.f, false, function() {
         DestroyTimer(GetExpiredTimer());
+
+
 
         for (int i = 0; i < 12 ; ++i) {
             player p = Player(i);
