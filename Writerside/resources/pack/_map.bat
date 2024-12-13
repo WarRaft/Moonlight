@@ -4,9 +4,11 @@ rd %WinMapDir% /s /q
 
 %MPQEditor% /extract %w3x% "*" "%WinMapDir%" /fp
 
+@echo off
 for /d %%D in ("%WinMapDir%\*") do (
     if exist %%D (rmdir %%D /s /q)
 )
+@echo on
 
 robocopy %MacMapDir% %WinMapDir% *.* /s /nfl /ndl
 
