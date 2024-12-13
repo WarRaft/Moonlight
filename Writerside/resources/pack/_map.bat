@@ -4,6 +4,10 @@ rd %WinMapDir% /s /q
 
 %MPQEditor% /extract %w3x% "*" "%WinMapDir%" /fp
 
+for /d %%D in ("%WinMapDir%\*") do (
+    if exist %%D (rmdir %%D /s /q)
+)
+
 robocopy %MacMapDir% %WinMapDir% *.* /s /nfl /ndl
 
 call clear.bat

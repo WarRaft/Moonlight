@@ -1,5 +1,5 @@
 @echo off
-for /r %WinMapDir% %%f in ("(listfile)" "(attributes)" ".DS_Store" "Thumbs.db") do (
+for /r %WinMapDir% %%f in ("(listfile)" "(attributes)" ".DS_Store" "Thumbs.db" "war3map.j") do (
     if exist "%%f" (del /q "%%f")
 )
 

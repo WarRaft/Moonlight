@@ -1,12 +1,10 @@
-namespace Map {
-    #include "as\\main.as"
+#include "as\\main.as"
     #include "as\\config.as"
-}
 
 void main() {
-    mainAnal();
+    Map::main();
 }
 
 void config() {
-    configAnal();
+    Map::config();
 }
