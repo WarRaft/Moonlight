@@ -19,6 +19,17 @@ namespace Map {
             "Attach\\CosmicElvenWings\\Void\\Borderless.mdx"
         };
 
+        array<int> heroes = {
+            'Ogrh',
+            'Hjai',
+            'Ecen'
+        };
+
+        for (int i = 0; i < heroes.length() ; ++i) {
+            int id = heroes[i];
+            Unit::scaling(id, 1.f);
+        }
+
         float dist = 1000;
         float ad = PI/6;
 
@@ -34,7 +45,7 @@ namespace Map {
             }
 
             Unit@ u = Unit
-                ::create(p, 'Hjai', x, y, a + PI)
+                ::create(p, heroes[i % heroes.length()], x, y, a + PI)
                 .attach(wings[i % wings.length()],  "chest")
                 .attach("Attach\\Torch.mdx", "hand left");
 
@@ -63,10 +74,12 @@ namespace Map {
             -2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM)
             );
 
+
         SetDayNightModels(
             "Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl",
             "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl"
             );
+
         NewSoundEnvironment("Default");
         SetMapMusic("Music", true, 0);
 

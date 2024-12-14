@@ -1,5 +1,7 @@
 namespace Player {
     int local = GetPlayerId(GetLocalPlayer());
+    int passive = GetPlayerId(Player(GetPlayerNeutralPassive()));
+    int agressive = GetPlayerId(Player(GetPlayerNeutralAggressive()));
 
     array<player> list = {
         Player(0),
@@ -13,9 +15,7 @@ namespace Player {
         Player(8),
         Player(9),
         Player(10),
-        Player(11),
-        Player(GetPlayerNeutralPassive( )),
-        Player(GetPlayerNeutralAggressive( )),
+        Player(11)
     };
 
     bool isLocal(int index) {

@@ -17,4 +17,6 @@ set WinAsDir=%WinDir%\moonlight_as\
 set w3x=%WinDir%\moonlight.w3x
 set w3xBackup=%WinDir%\moonlight_backup\%DateTime%.w3x
 
+explorer %MacDir%
+
 @echo on
