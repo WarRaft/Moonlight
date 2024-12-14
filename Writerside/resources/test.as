@@ -8,21 +8,19 @@ float lerp(float a, float b, float t) {
 void missileCallback() {
     timer t = GetExpiredTimer();
     uint index = GetHandleId(t);
-    //auto @m = cast<Missile>(missileTable[index]);
+    auto@ m = cast<Missile>(missileTable[index]);
     if (!m.tick()) return;
     missileTable.delete(index);
 }
 
-
 class Missile {
 
     Missile(SpellEffectEvent@ spellEffectEvent) {
-        auto @evt = @this.spellEffectEvent = @spellEffectEvent;
-        auto    @s = @evt.casterPoint;
+        auto@ evt = @this.spellEffectEvent = @spellEffectEvent;
+        auto@ s = @evt.casterPoint;
         s.z += 100;
-        auto    @e = @evt.targetPoint;
+        auto@ e = @evt.targetPoint;
         e.z += 50;
-
 
         specialEffect = AddSpecialEffect("Missile\\ShockBlast_Green.mdx", s.x, s.y);
         SetSpecialEffectZ(specialEffect, s.z);
@@ -117,9 +115,6 @@ class SpellEffectEvent {
 void main() {
     TimerStart(CreateTimer(), 0.f, false, function() {
         DestroyTimer(GetExpiredTimer());
-
-
-
     });
 }
 

@@ -1,36 +1,81 @@
+#include "math.as";
+#include "Game\\Unit.as";
+#include "Game\\Camera.as";
+#include "Game\\Player.as";
+
 namespace Map {
 
-    // function.+\n.[\s\S]*?endfunction
-    //function\nendfunction
+    void spawnHeroes() {
+        array<string> wings = {
+            "Attach\\CosmicElvenWings\\Chaos\\Chaos.mdx",
+            "Attach\\CosmicElvenWings\\Chaos\\Borderless.mdx",
+            "Attach\\CosmicElvenWings\\Cosmic\\Cosmic.mdx",
+            "Attach\\CosmicElvenWings\\Cosmic\\Borderless.mdx",
+            "Attach\\CosmicElvenWings\\Divine\\Divine.mdx",
+            "Attach\\CosmicElvenWings\\Divine\\Borderless.mdx",
+            "Attach\\CosmicElvenWings\\Nature\\Nature.mdx",
+            "Attach\\CosmicElvenWings\\Nature\\Borderless.mdx",
+            "Attach\\CosmicElvenWings\\Void\\Void.mdx",
+            "Attach\\CosmicElvenWings\\Void\\Borderless.mdx"
+        };
 
-void main() {
-    print("Map::main()\n");
-
-    //SetTimeOfDayScale(10);
-    SuspendTimeOfDay(false);
-    SetFloatGameState(GAME_STATE_TIME_OF_DAY, 0.f);
-
-    SetCameraBounds( - 2048.0f + GetCameraMargin(CAMERA_MARGIN_LEFT),  - 2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 2048.0f - GetCameraMargin(CAMERA_MARGIN_RIGHT), 2048.0f - GetCameraMargin(CAMERA_MARGIN_TOP),  - 2048.0f + GetCameraMargin(CAMERA_MARGIN_LEFT), 2048.0f - GetCameraMargin(CAMERA_MARGIN_TOP), 2048.0f - GetCameraMargin(CAMERA_MARGIN_RIGHT),  - 2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM));
-    SetDayNightModels("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl", "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl");
-    NewSoundEnvironment("Default");
-    SetMapMusic("Music", true, 0);
-
-    // set bj_mapInitialPlayableArea = Rect(GetCameraBoundMinX()-GetCameraMargin(CAMERA_MARGIN_LEFT), GetCameraBoundMinY()-GetCameraMargin(CAMERA_MARGIN_BOTTOM), GetCameraBoundMaxX()+GetCameraMargin(CAMERA_MARGIN_RIGHT), GetCameraBoundMaxY()+GetCameraMargin(CAMERA_MARGIN_TOP))
-
-    TimerStart(CreateTimer(), 0.f, false, function() {
-        DestroyTimer(GetExpiredTimer());
+        float dist = 1000;
+        float ad = PI/6;
 
         for (int i = 0; i < 12 ; ++i) {
-            player p = Player(i);
-            if (GetPlayerController(p) == MAP_CONTROL_USER && GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING) {
-                unit u = CreateUnit(p, 'Hjai', 0, 0, 0);
-                PanCameraToTimed(0, 0,0);
-                SelectUnit(u, true);
-                AddSpecialEffectTarget("Attach\\CosmicElvenWings\\Divine\\Divine.mdx", u, "chest");
-                AddSpecialEffectTarget("Attach\\Torch.mdx", u, "hand left");
+            float a = PI - ad * i;
+            float x = cos(a) * dist;
+            float y = sin(a) * dist;
+
+            int p = i;
+            if (!Player::isPlaying(i)) {
+                if (GetConnectionType() != CONNECTION_TYPE_SINGLE_PLAYER) continue;
+                p = Player::local;
+            }
+
+            Unit@ u = Unit
+                ::create(p, 'Hjai', x, y, a + PI)
+                .attach(wings[i % wings.length()],  "chest")
+                .attach("Attach\\Torch.mdx", "hand left");
+
+            if (Player::isLocal(i)) {
+                Camera::pan(x, y);
+                u.selected = true;
             }
         }
-    });
-}
+    }
+
+    void main() {
+        print("Map::main()\n");
+
+        //SetTimeOfDayScale(10);
+        SuspendTimeOfDay(false);
+        SetFloatGameState(GAME_STATE_TIME_OF_DAY, 0.f);
+
+        SetCameraBounds(
+            -2048.0f + GetCameraMargin(CAMERA_MARGIN_LEFT),
+            -2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM),
+            2048.0f - GetCameraMargin(CAMERA_MARGIN_RIGHT),
+            2048.0f - GetCameraMargin(CAMERA_MARGIN_TOP),
+            -2048.0f + GetCameraMargin(CAMERA_MARGIN_LEFT),
+            2048.0f - GetCameraMargin(CAMERA_MARGIN_TOP),
+            2048.0f - GetCameraMargin(CAMERA_MARGIN_RIGHT),
+            -2048.0f + GetCameraMargin(CAMERA_MARGIN_BOTTOM)
+            );
+
+        SetDayNightModels(
+            "Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl",
+            "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl"
+            );
+        NewSoundEnvironment("Default");
+        SetMapMusic("Music", true, 0);
+
+        // set bj_mapInitialPlayableArea = Rect(GetCameraBoundMinX()-GetCameraMargin(CAMERA_MARGIN_LEFT), GetCameraBoundMinY()-GetCameraMargin(CAMERA_MARGIN_BOTTOM), GetCameraBoundMaxX()+GetCameraMargin(CAMERA_MARGIN_RIGHT), GetCameraBoundMaxY()+GetCameraMargin(CAMERA_MARGIN_TOP))
+
+        TimerStart(CreateTimer(), 0.f, false, function() {
+            DestroyTimer(GetExpiredTimer());
+            spawnHeroes();
+        });
+    }
 
 }
