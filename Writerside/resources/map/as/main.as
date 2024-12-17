@@ -5,6 +5,13 @@
 
 namespace Map {
 
+    enum Heroes {
+        Jaina = 'Hjai',
+        Hellscream = 'Hjai',
+        Cenarius = 'Ecen',
+        Kael = 'Hkal'
+    }
+
     void spawnHeroes() {
         array<string> wings = {
             "Attach\\CosmicElvenWings\\Chaos\\Chaos.mdx",
@@ -20,20 +27,23 @@ namespace Map {
         };
 
         array<int> heroes = {
-            'Ogrh',
-            'Hjai',
-            'Ecen'
+            Heroes::Jaina,
+            Heroes::Hellscream,
+            Heroes::Cenarius,
+            Heroes::Kael
         };
 
-        for (int i = 0; i < heroes.length() ; ++i) {
+        for (uint i = 0; i < heroes.length() ; ++i) {
             int id = heroes[i];
+            //switch (id){}
+
             Unit::scaling(id, 1.f);
         }
 
-        float dist = 1000;
+        float dist = 600;
         float ad = PI/6;
 
-        for (int i = 0; i < 12 ; ++i) {
+        for (uint i = 0; i < 12 ; ++i) {
             float a = PI - ad * i;
             float x = cos(a) * dist;
             float y = sin(a) * dist;
@@ -53,6 +63,14 @@ namespace Map {
                 Camera::pan(x, y);
                 u.selected = true;
             }
+        }
+    }
+
+    void spawnEnv() {
+        for (uint i = 0; i < 12 ; ++i) {
+            fogmodifier fm = CreateFogModifierRadius(Player::list[i], FOG_OF_WAR_VISIBLE, 0, 0, 550, true, false);
+            FogModifierStart(fm);
+            //SetTerrainType(0, 0, 'Isnw', -1, 5, 0);
         }
     }
 
@@ -87,6 +105,7 @@ namespace Map {
 
         TimerStart(CreateTimer(), 0.f, false, function() {
             DestroyTimer(GetExpiredTimer());
+            spawnEnv();
             spawnHeroes();
         });
     }
