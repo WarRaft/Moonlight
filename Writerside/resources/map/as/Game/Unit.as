@@ -41,27 +41,24 @@ class Unit {
 
     unit base;
 
-// https://www.angelcode.com/angelscript/sdk/docs/manual/doc_script_class_prop.html
-    bool selected
-    {
-        get const
-        {
+    // https://www.angelcode.com/angelscript/sdk/docs/manual/doc_script_class_prop.html
+    bool selected {
+        get const {
             return false;
         }
-        set
-        {
+        set {
             SelectUnit(base, value);
         }
     }
 
     Unit@ select(bool value) {
         SelectUnit(base, value);
-            return @this;
+        return @this;
     }
 
     Unit@ attach(string model, string point) {
         AddSpecialEffectTarget(model, base, point);
-            return @this;
+        return @this;
     }
 
 }
