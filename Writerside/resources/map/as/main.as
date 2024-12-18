@@ -7,7 +7,7 @@ namespace Map {
 
     enum Heroes {
         Jaina = 'Hjai',
-        Hellscream = 'Hjai',
+        Hellscream = 'Ogrh',
         Cenarius = 'Ecen',
         Kael = 'Hkal'
     }
@@ -35,12 +35,17 @@ namespace Map {
 
         for (uint i = 0; i < heroes.length() ; ++i) {
             int id = heroes[i];
-            //switch (id){}
+                switch (id){
+                    case Heroes::Cenarius:
+                        Unit::selectionScale(id, 2.f);
+                            break;
+                }
 
             Unit::scaling(id, 1.f);
+            Unit::abilityList(id, "AInv");
         }
 
-        float dist = 600;
+        float dist = 700;
         float ad = PI/6;
 
         for (uint i = 0; i < 12 ; ++i) {
@@ -56,8 +61,7 @@ namespace Map {
 
             Unit@ u = Unit
                 ::create(p, heroes[i % heroes.length()], x, y, a + PI)
-                .attach(wings[i % wings.length()],  "chest")
-                .attach("Attach\\Torch.mdx", "hand left");
+                .attach(wings[i % wings.length()],  "chest");
 
             if (Player::isLocal(i)) {
                 Camera::pan(x, y);

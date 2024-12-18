@@ -1,3 +1,13 @@
+enum AttackType {
+    Normal,
+    Melee,
+    Pierce,
+    Siege,
+    Magick,
+    Chaos,
+    Hero
+}
+
 namespace Unit {
     Unit create(int p, int id, float x = 0, float y = 0, float rad = 0) {
         return Unit(CreateUnit(Player::list[p], id, x, y, rad2deg(rad)));
@@ -5,8 +15,20 @@ namespace Unit {
 
     void scaling(int id, float value) {
         SetUnitBaseRealFieldById(id, UNIT_RF_SCALING_VALUE, value);
-        // UNIT_RF_SELECTION_SCALE
+    }
+
+    void selectionScale(int id, float value) {
+        SetUnitBaseRealFieldById(id, UNIT_RF_SELECTION_SCALE, value);
+        //
         // UNIT_RF_SELECTION_CIRCLE_HEIGHT
+    }
+
+    void abilityList(int id, string value) {
+        SetUnitBaseStringFieldById(id, UNIT_SF_ABILITY_LIST, value);
+    }
+
+    bool attackType(int id, AttackType value, int index = 0) {
+        return SetUnitBaseWeaponIntegerFieldById(id, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, index, value);
     }
 }
 
