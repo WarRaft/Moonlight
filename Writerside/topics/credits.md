@@ -50,5 +50,7 @@
     - [Источник Вечности](https://xgm.guru/p/wc3/istokvechnosti)
 - [HappyTauren](https://www.hiveworkshop.com/members/happytauren.10087)
     - [Animated DNC Light Models](https://www.hiveworkshop.com/threads/animated-dnc-light-models.221425)
+- [8gabriel8](https://xgm.guru/user/8gabriel8)
+  - [Фигурная рамка загрузочных экранов официальных кампаний](https://xgm.guru/p/efir/frame)
 - [The_Silent](https://www.hiveworkshop.com/members/the_silent.143026)
     - [Dark Nights](https://www.hiveworkshop.com/threads/dark-nights-day-night-cycle.324142)

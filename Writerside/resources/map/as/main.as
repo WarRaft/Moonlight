@@ -38,7 +38,7 @@ namespace Map {
                 switch (id){
                     case Heroes::Cenarius:
                         Unit::selectionScale(id, 2.f);
-                        break;
+                            break;
                 }
 
             Unit::scaling(id, 1.f);
