@@ -1,4 +1,5 @@
-class Random {
+
+class RandomOld {
     Random() delete;
 
     Random(uint seed) {

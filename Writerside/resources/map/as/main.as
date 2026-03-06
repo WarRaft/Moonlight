@@ -80,6 +80,11 @@ namespace Map {
 
     void main() {
         print("Map::main()\n");
+        SetRandomSeed(100500);
+        for (int i = 0; i <= 10; i++) {
+            ConsolePrint( "i = " + i + " | " + GetRandomReal(-1000.f, 0.f) + "\n");
+        }
+
 
         //SetTimeOfDayScale(10);
         SuspendTimeOfDay(false);
